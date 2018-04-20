@@ -9,7 +9,10 @@ class Map
   end
 
   def lookup(key)
-
+    @map.each do |entry|
+      return entry[1] if key == entry[0]
+    end
+    nil
   end
 
   def remove(key)
