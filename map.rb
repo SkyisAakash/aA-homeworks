@@ -13,7 +13,9 @@ class Map
   end
 
   def remove(key)
-    
+    @map.each_with_index do |entry, idx|
+      @map.delete_at(idx) if entry[0] == key
+    end
   end
 
   def show
