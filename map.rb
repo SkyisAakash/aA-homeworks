@@ -5,7 +5,14 @@ class Map
   end
 
   def assign(key,value)
-
+    done = false
+    @map.each_with_index do |entry, idx|
+      if entry[0] == key
+        @map[idx][1] = value
+        done = true
+      end
+    end
+    @map << [key,value] if done == false
   end
 
   def lookup(key)
