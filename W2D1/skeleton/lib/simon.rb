@@ -29,7 +29,8 @@ class Simon
   end
 
   def require_sequence
-
+    puts("There are #{sequence_length} colors in sequence. Enter your guess using #{COLORS} colors")
+    gets.chomp
   end
 
   def add_random_color
@@ -37,7 +38,7 @@ class Simon
   end
 
   def round_success_message
-
+    puts "Congratulations, you guessed correctly. Time for another round"
   end
 
   def game_over_message
