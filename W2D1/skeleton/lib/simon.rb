@@ -1,3 +1,4 @@
+require 'byebug'
 class Simon
   COLORS = %w(red blue green yellow)
 
@@ -29,8 +30,18 @@ class Simon
   end
 
   def require_sequence
-    puts("There are #{sequence_length} colors in sequence. Enter your guess using #{COLORS} colors")
-    gets.chomp
+    puts("Ready!")
+    sleep(1)
+    puts("Set!")
+    sleep(1)
+    puts("Go!")
+    sleep(1)
+    puts("The sequence is #{seq}.")
+    sleep(2)
+    system('clear')
+    puts("Enter your guess using #{COLORS} colors")
+    input = gets.chomp
+      @game_over = true if input != seq.join(" ")
   end
 
   def add_random_color
@@ -39,10 +50,12 @@ class Simon
 
   def round_success_message
     puts "Congratulations, you guessed correctly. Time for another round"
+    sleep(2)
+    system("clear")
   end
 
   def game_over_message
-    "Game Over!, Play again:)"
+    puts "Game Over, your score was #{sequence_length}! Play again:)"
   end
 
   def reset_game
@@ -50,4 +63,11 @@ class Simon
     @seq = []
     @sequence_length = 1
   end
+end
+
+if __FILE__ ==$PROGRAM_NAME
+
+  game = Simon.new
+  game.play
+
 end
