@@ -1,6 +1,6 @@
 require 'byebug'
 class Board
-  attr_accessor :cups
+  attr_accessor :cups, :player1, :player2
 
   def initialize(name1, name2)
     @cups = Array.new(14) {Array.new}
@@ -22,19 +22,19 @@ class Board
 
   def make_move(start_pos, current_player_name)
      # byebug
-     stones_to_distribute = @cups[start_pos]
-     @cups[start_pos] = []
+     stones_to_distribute = cups[start_pos]
+     cups[start_pos] = []
      next_cup = start_pos
      # opposite_player_cup = (side ==  1)? 13:6
      until stones_to_distribute.empty?
        next_cup += 1
        next_cup = 0 if next_cup > 13
        if next_cup == 6
-         @cups[next_cup]  << stones_to_distribute.shift if current_player_name == @player1
+         cups[next_cup]  << stones_to_distribute.shift if current_player_name == player1
        elsif next_cup == 13
-         @cups[next_cup]  << stones_to_distribute.shift if current_player_name == @player2
+         cups[next_cup]  << stones_to_distribute.shift if current_player_name == player2
        else
-         @cups[next_cup] << stones_to_distribute.shift
+         cups[next_cup] << stones_to_distribute.shift
        end
         end
   render
@@ -43,7 +43,7 @@ class Board
 
   def next_turn(ending_cup_idx)
     return :prompt if ending_cup_idx == 6 || ending_cup_idx == 13
-    return :switch if @cups[ending_cup_idx].length == 1
+    return :switch if cups[ending_cup_idx].length == 1
     return ending_cup_idx
 
     # helper method to determine what #make_move returns
