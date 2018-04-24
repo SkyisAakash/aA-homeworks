@@ -1,5 +1,6 @@
 require_relative 'board'
 require_relative 'player'
+require 'byebug'
 
 class Mancala
   def initialize(name1, name2)
@@ -13,6 +14,8 @@ class Mancala
     @board.render
     current_player = @player1
     until won?
+      # debugger
+      @board.render
       take_turn(current_player)
       current_player = current_player == @player1 ? @player2 : @player1
     end
@@ -29,6 +32,7 @@ class Mancala
 
         begin
           start_pos = current_player.prompt
+           # debugger
           start_pos -= 1 if start_pos <= 6
           @board.valid_move?(start_pos)
         rescue Exception => e
@@ -61,4 +65,10 @@ class Mancala
     puts "12  11  10   9   8   7"
     puts " 1   2   3   4   5   6"
   end
+end
+
+if __FILE__ == $PROGRAM_NAME
+  game  = Mancala.new("sky", "mark")
+  game.play
+
 end
