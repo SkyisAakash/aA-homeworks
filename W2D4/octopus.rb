@@ -56,6 +56,10 @@ def slow_dance(direction, tiles)
   tiles.each_with_index { |tile, idx| return idx if direction == tile }
 end
 
+def fast_dance(direction, tiles)
+  tiles.index(direction)
+end
+
 if __FILE__ == $PROGRAM_NAME
   array = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
 
@@ -64,6 +68,6 @@ if __FILE__ == $PROGRAM_NAME
 # p [5,4,3,2,1].merge_sort
 # p dominant(array)
 # p clever(array)
-p slow_dance("up", tiles_array)
-p slow_dance("right-down", tiles_array)
+p fast_dance("up", tiles_array)
+p fast_dance("right-down", tiles_array)
 end
