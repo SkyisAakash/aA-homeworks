@@ -51,10 +51,19 @@ def clever(array)
   longest
 end
 
+
+def slow_dance(direction, tiles)
+  tiles.each_with_index { |tile, idx| return idx if direction == tile }
+end
+
 if __FILE__ == $PROGRAM_NAME
   array = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
+
+  tiles_array = ["up", "right-up", "right", "right-down", "down", "left-down", "left",  "left-up" ]
 # p sluggish(array)
 # p [5,4,3,2,1].merge_sort
 # p dominant(array)
-p clever(array)
+# p clever(array)
+p slow_dance("up", tiles_array)
+p slow_dance("right-down", tiles_array)
 end
