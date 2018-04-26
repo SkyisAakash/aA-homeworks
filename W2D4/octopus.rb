@@ -41,8 +41,13 @@ class Array
 
 end
 
+def dominant(array)
+  array.merge_sort { |x, y| x.length <=> y.length}[-1]
+end
+
 if __FILE__ == $PROGRAM_NAME
   array = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
 # p sluggish(array)
-p [5,4,3,2,1].merge_sort
+# p [5,4,3,2,1].merge_sort
+p dominant(array)
 end
