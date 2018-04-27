@@ -1,5 +1,7 @@
 require 'byebug'
 class LRUCache
+
+  attr_reader :array, :max
     def initialize(size)
       @array = []
       @max = size
