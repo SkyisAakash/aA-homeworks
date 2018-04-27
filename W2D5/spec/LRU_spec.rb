@@ -47,4 +47,13 @@ describe LRUCache do
       end
     end
   end
+
+  describe "#show" do
+    it "prints out the cache array" do
+      expect { cache.show }.to output("[]").to_stdout
+      cache.add("I walk the line")
+      cache.add(5)
+      expect { cache.show }.to output("[\"I walk the line\", 5]").to_stdout
+    end
+  end
 end
