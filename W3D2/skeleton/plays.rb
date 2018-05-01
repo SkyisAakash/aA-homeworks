@@ -81,6 +81,7 @@ attr_accessor :name, :birth_year, :id
     ans = PlayDBConnection.instance.execute(<<-SQL, name)
       SELECT * FROM playwrights WHERE name = ?
     SQL
+    Playwright.new(ans.first)
   end
 
   def create
@@ -111,6 +112,6 @@ attr_accessor :name, :birth_year, :id
     ans = PlayDBConnection.instance.execute(<<-SQL, @id )
     SELECT * FROM plays WHERE playwright_id = ?
     SQL
-    ans.map { |play| Play.new(play) }
+    ans.map { |play| Play.new(pl) }
   end
 end
