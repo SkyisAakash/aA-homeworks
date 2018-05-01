@@ -105,4 +105,10 @@ attr_accessor :name, :birth_year, :id
         id = ?
     SQL
   end
+
+  def get_plays
+    raise "#{self} not it database" unless @id
+    PlayDBConnection.instance.execute(<<-SQL, @id )
+    SELECT * FROM plays WHERE playwright_id = ?
+    SQL
 end
