@@ -78,7 +78,7 @@ attr_accessor :name, :birth_year, :id
   end
 
   def self.find_by_name(name)
-    ans = PlayDBConnection.instance.execute(<<SQL, name)
+    ans = PlayDBConnection.instance.execute(<<-SQL, name)
       SELECT * FROM playwrights WHERE name = ?
     SQL
   end
@@ -108,7 +108,9 @@ attr_accessor :name, :birth_year, :id
 
   def get_plays
     raise "#{self} not it database" unless @id
-    PlayDBConnection.instance.execute(<<-SQL, @id )
+    ans = PlayDBConnection.instance.execute(<<-SQL, @id )
     SELECT * FROM plays WHERE playwright_id = ?
     SQL
+    ans.map { |play| Play.new(play) }
+  end
 end
