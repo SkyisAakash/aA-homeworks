@@ -63,3 +63,12 @@ class Play
 end
 
 class Playwright
+
+attr_accessor :name, :birth_year, :id
+
+  def initialize(options)
+    @id = options['id']
+    @name = options['name']
+    @birth_year = options['birth_year']
+  end
+end
