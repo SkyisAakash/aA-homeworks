@@ -56,6 +56,10 @@ class Play
   end
 
   def find_by_playwright(name)
-
+    PlayDBConnection.instance.execute(<<-SQL, playwright_id)
+    SELECT * FROM plays WHERE playwright_id = ?
+    SQL
   end
 end
+
+class Playwright
