@@ -11,9 +11,9 @@
 #
 
 class User < ApplicationRecord
-  validates :username, :session_token, presence: true, uniqueess: true
+  validates :username, :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: { mesage: "Password can't be blank" }
-  validates :password_digest, length: { minimum: 4, allow_nil: true }, uniqueness: true
+  validates :password, length: { minimum: 4, allow_nil: true }#, uniqueness: true
   before_validation :ensure_session_token
   attr_reader :password
 
@@ -38,7 +38,7 @@ class User < ApplicationRecord
   end
 
   def ensure_session_token
-    session_token ||= self.class..generate_session_token
+    self.session_token ||= self.class.generate_session_token
 
   end
 
