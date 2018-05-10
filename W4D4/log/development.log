@@ -267,3 +267,38 @@ Processing by CatsController#index as HTML
 Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/cats/1" for 127.0.0.1 at 2018-05-09 20:53:34 -0700
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "o3Cwsqa3TkF1KiR_UA4nqA"], ["LIMIT", 1]]
+  [1m[36mCatRentalRequest Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 LIMIT $2[0m  [["cat_id", 1], ["LIMIT", 1]]
+  Rendered cats/show.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 23ms (Views: 19.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/cat_rental_requests/new?cat_id=1" for 127.0.0.1 at 2018-05-09 20:53:44 -0700
+Processing by CatRentalRequestsController#new as HTML
+  Parameters: {"cat_id"=>"1"}
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.8ms)
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  Rendered cat_rental_requests/new.html.erb within layouts/application (4.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "o3Cwsqa3TkF1KiR_UA4nqA"], ["LIMIT", 1]]
+Completed 200 OK in 48ms (Views: 21.2ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/cats/1" for 127.0.0.1 at 2018-05-09 20:55:32 -0700
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "o3Cwsqa3TkF1KiR_UA4nqA"], ["LIMIT", 1]]
+  [1m[36mCatRentalRequest Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 LIMIT $2[0m  [["cat_id", 1], ["LIMIT", 1]]
+  Rendered cats/show.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 45ms (Views: 38.8ms | ActiveRecord: 3.4ms)
+
+
