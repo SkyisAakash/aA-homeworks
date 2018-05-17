@@ -43,7 +43,27 @@ function isPrime(n) {
   return(flag);
 }
 
-console.log(isPrime(2));
-console.log(isPrime(10));
-console.log(isPrime(15485863));
-console.log(isPrime(3548563));
+// console.log(isPrime(2));
+// console.log(isPrime(10));
+// console.log(isPrime(15485863));
+// console.log(isPrime(3548563));
+
+
+function sumOfNPrimes(n) {
+  var sum = 0;
+  var counter = 0;
+  var i = 2;
+  while (counter < n) {
+    let prime = isPrime(i);
+    if (prime === true) {
+      sum += i;
+      counter++;
+    }
+    i++
+  }
+  return sum;
+}
+
+console.log(sumOfNPrimes(0));
+console.log(sumOfNPrimes(1));
+console.log(sumOfNPrimes(4));
