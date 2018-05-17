@@ -32,4 +32,18 @@ function fizzBuzz(array) {
   return result;
 }
 
-console.log(fizzBuzz([1,2,3,4,5,6,7,8,9,15]));
+// console.log(fizzBuzz([1,2,3,4,5,6,7,8,9,15]));
+
+
+function isPrime(n) {
+  var flag = true
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) { flag = false }
+  }
+  return(flag);
+}
+
+console.log(isPrime(2));
+console.log(isPrime(10));
+console.log(isPrime(15485863));
+console.log(isPrime(3548563));
