@@ -50,4 +50,17 @@ let herd = [ellie, charlie, kate, micah];
 Elephant.paradeHelper = function(elephant) {
   console.log(`${elephant.name} is trolling by!`);
 };
-Elephant.paradeHelper(micah);
+// Elephant.paradeHelper(micah);
+
+function dinnerBreakfast() {
+  let order = 'cheesy scrambled eggs';
+  console.log(`I'd like ${order} please`) ;
+  return function (food) {
+    order = `${order} and ${food}`;
+    console.log(`I'd link ${order} please`);
+  };
+};
+
+let bfastOrder = dinnerBreakfast();
+bfastOrder("chocolate chip pancakes");
+bfastOrder("grits");
