@@ -168,7 +168,13 @@ View.prototype.exercise6 = function () {
   //Challenge: Give every square a random color!
   //Result: Every square becomes a color as soon as this code runs. The grid
   //should become a beautiful rainbow of colors.
-
+  // $('.square:nth-child(n)').css("background-color", window._randomColorString());
+  const $boxes = $('.square');
+  $('.square').each( (idx, el) => {
+    var $sq = $(el);
+      // debugger
+    $sq.css("background-color", _randomColorString());
+  })
   //hint: use window._randomColorString() (defined at top) to get a random color!
 
   //your code here!
@@ -182,6 +188,10 @@ View.prototype.exercise7 = function(){
   //rainbow.
 
   //your code here!
+  $('ul.row').on("mouseover", "li", event => {
+    const $tar = $(event.currentTarget);
+    console.log($tar.css("background-color"));
+  })
 };
 
 
