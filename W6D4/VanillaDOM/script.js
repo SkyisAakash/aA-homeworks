@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
+  // Toggle form for adding pictures
   const toggleDogPicForm = (event) => {
     // debugger
     const DogPicForm = event.target.nextElementSibling;
@@ -24,11 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
       DogPicForm.className = "photo-form-container hidden";
     }
   }
+  // --- your code here!
   const photoButton = document.querySelector(".photo-show-button");
   console.log(photoButton);
   photoButton.addEventListener("click", toggleDogPicForm);
 
 
+  // adding SF places as list items
   const FormData = document.querySelector(".favorite-submit");
   // const FormData = document.getElementById("sky");
   // debugger
@@ -46,18 +49,31 @@ document.addEventListener("DOMContentLoaded", () => {
     li.textContent = foodName;
     ul.appendChild(li);
   });
-
-
-
-  // adding SF places as list items
-
   // --- your code here!
 
 
+const uploadPic = (event) => {
+  event.preventDefault();
+  const DogPic = document.querySelector(".photo-url-input");
+  const DogPicUrl = DogPic.value;
+  DogPic.value = "";
+  const ImgLi = document.createElement("img");
+  ImgLi.src = DogPicUrl;
+  const DogLi = document.createElement("li");
+  DogLi.appendChild(ImgLi);
+  const DogUl = document.querySelector(".dog-photos");
+  DogUl.appendChild(DogLi);
+}
 
-  // adding new photos
 
-  // --- your code here!
+const newPicButton = document.querySelector(".photo-url-submit");
+newPicButton.addEventListener("click", uploadPic);
+
+
+
+
+
+
 
 
 
