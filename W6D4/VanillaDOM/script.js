@@ -15,6 +15,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
+  const toggleDogPicForm = (event) => {
+    // debugger
+    const DogPicForm = event.target.nextElementSibling;
+    if (DogPicForm.className === "photo-form-container hidden") {
+      DogPicForm.className = "photo-form-container";
+    } else {
+      DogPicForm.className = "photo-form-container hidden";
+    }
+  }
+  const photoButton = document.querySelector(".photo-show-button");
+  console.log(photoButton);
+  photoButton.addEventListener("click", toggleDogPicForm);
+
+
   const FormData = document.querySelector(".favorite-submit");
   // const FormData = document.getElementById("sky");
   // debugger
