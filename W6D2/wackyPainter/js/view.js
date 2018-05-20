@@ -31,7 +31,8 @@ View.prototype.exercise2 = function () {
   //Result: Every square vanishes
 
   //your code here!
-  $('li').removeClass("square");
+  // $('li').removeClass("square");
+  $(".square").remove();
 };
 
 View.prototype.exercise3 = function () {
@@ -48,6 +49,12 @@ View.prototype.exercise4 = function () {
   //Result: Your name appears in every other square.
 
   //your code here!
+  // const $bestName = $("Sky");
+  // $bestName.text("Sky")
+  // const $squares = $(".square");
+  // debugger
+  // $squares.forEach( el => el.text("sky"));
+  $(".square:nth-child(odd)").text("Sky")
 };
 
 View.prototype.exercise5 = function () {
@@ -59,6 +66,12 @@ View.prototype.exercise5 = function () {
   //  'data-pos' of every square
 
   //your code here!
+  $(".square").on("click", event => {
+    const $box = $(event.currentTarget);
+    // debugger
+    // const numbers = $box.data("data_pos");
+    alert($box.attr("data-pos"));
+  });
 };
 
 View.prototype.exercise6 = function () {
