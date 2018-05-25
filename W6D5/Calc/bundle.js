@@ -9693,6 +9693,11 @@ var Calculator = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _state = this.state,
+          num1 = _state.num1,
+          num2 = _state.num2,
+          result = _state.result;
+
       return _react2.default.createElement(
         "div",
         null,
@@ -9701,8 +9706,8 @@ var Calculator = function (_React$Component) {
           null,
           this.state.result
         ),
-        _react2.default.createElement("input", { onChange: this.setNum1, value: this.state.num1 }),
-        _react2.default.createElement("input", { onChange: this.setNum2, value: this.state.num2 }),
+        _react2.default.createElement("input", { onChange: this.setNum1, value: num1 }),
+        _react2.default.createElement("input", { onChange: this.setNum2, value: num2 }),
         _react2.default.createElement(
           "button",
           { type: "button", name: "add", onClick: this.add },
