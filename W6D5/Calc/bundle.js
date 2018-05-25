@@ -9631,6 +9631,7 @@ var Calculator = function (_React$Component) {
 
     _this.state = { result: 0, num1: "", num2: "" };
     _this.setNum1 = _this.setNum1.bind(_this);
+    _this.setNum2 = _this.setNum2.bind(_this);
     //your code here
     return _this;
   }
@@ -9647,6 +9648,14 @@ var Calculator = function (_React$Component) {
       console.log(num1);
     }
   }, {
+    key: "setNum2",
+    value: function setNum2(e) {
+      var num2 = void 0;
+      if (e.target.value) num2 = parseInt(e.target.value);else num2 = "";
+      this.setState({ num2: num2 });
+      console.log(num2);
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
@@ -9658,7 +9667,7 @@ var Calculator = function (_React$Component) {
           this.state.result
         ),
         _react2.default.createElement("input", { onChange: this.setNum1, value: this.state.num1 }),
-        _react2.default.createElement("input", { value: this.state.num2 }),
+        _react2.default.createElement("input", { onChange: this.setNum2, value: this.state.num2 }),
         "//your code will replace this"
       );
     }
