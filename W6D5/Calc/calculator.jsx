@@ -7,6 +7,10 @@ class Calculator extends React.Component{
     this.setNum1 = this.setNum1.bind(this);
     this.setNum2 = this.setNum2.bind(this);
     this.add = this.add.bind(this);
+    this.sub = this.sub.bind(this);
+    this.mult = this.mult.bind(this);
+    this.div = this.div.bind(this);
+    this.clear = this.clear.bind(this);
     //your code here
   }
 
@@ -45,6 +49,10 @@ class Calculator extends React.Component{
     this.setState( {result: this.state.num1 / this.state.num2 });
   }
 
+  clear(e) {
+    e.preventDefault();
+    this.setState( {result: 0, num1: "", num2: "" });
+  }
   render(){
     return (
       <div>
@@ -52,6 +60,10 @@ class Calculator extends React.Component{
         <input onChange = {this.setNum1} value = {this.state.num1}></input>
         <input onChange = {this.setNum2} value = {this.state.num2}></input>
         <button type = "button" name = "add" onClick = {this.add}>Add</button>
+        <button type = "button" name = "sub" onClick = {this.sub}>Subtract</button>
+        <button type = "button" name = "mult" onClick = {this.mult}>Multiply</button>
+        <button type = "button" name = "div" onClick = {this.div}>Divide</button>
+        <button type = "button" name = "clear" onClick = {this.clear}>Reset</button>
         //your code will replace this
       </div>
     );

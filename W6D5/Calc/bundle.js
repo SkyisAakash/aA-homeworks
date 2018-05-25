@@ -9633,6 +9633,10 @@ var Calculator = function (_React$Component) {
     _this.setNum1 = _this.setNum1.bind(_this);
     _this.setNum2 = _this.setNum2.bind(_this);
     _this.add = _this.add.bind(_this);
+    _this.sub = _this.sub.bind(_this);
+    _this.mult = _this.mult.bind(_this);
+    _this.div = _this.div.bind(_this);
+    _this.clear = _this.clear.bind(_this);
     //your code here
     return _this;
   }
@@ -9681,6 +9685,12 @@ var Calculator = function (_React$Component) {
       this.setState({ result: this.state.num1 / this.state.num2 });
     }
   }, {
+    key: "clear",
+    value: function clear(e) {
+      e.preventDefault();
+      this.setState({ result: 0, num1: "", num2: "" });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
@@ -9697,6 +9707,26 @@ var Calculator = function (_React$Component) {
           "button",
           { type: "button", name: "add", onClick: this.add },
           "Add"
+        ),
+        _react2.default.createElement(
+          "button",
+          { type: "button", name: "sub", onClick: this.sub },
+          "Subtract"
+        ),
+        _react2.default.createElement(
+          "button",
+          { type: "button", name: "mult", onClick: this.mult },
+          "Multiply"
+        ),
+        _react2.default.createElement(
+          "button",
+          { type: "button", name: "div", onClick: this.div },
+          "Divide"
+        ),
+        _react2.default.createElement(
+          "button",
+          { type: "button", name: "clear", onClick: this.clear },
+          "Reset"
         ),
         "//your code will replace this"
       );
