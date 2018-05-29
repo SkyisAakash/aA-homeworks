@@ -1326,6 +1326,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
 
+var _redux2 = _interopRequireDefault(_redux);
+
 var _root_reducer = __webpack_require__(/*! ../reducers/root_reducer */ "./frontend/reducers/root_reducer.js");
 
 var _root_reducer2 = _interopRequireDefault(_root_reducer);
@@ -1340,6 +1342,17 @@ var configureStore = function configureStore() {
     localStorage.state = JSON.stringify(store.getState());
   });
   return store;
+};
+
+var addLoggingToDispatch = function addLoggingToDispatch(store) {
+  return function (next) {
+    return function (action) {
+      console.log(store.getState());
+      console.log(action);
+      next(action);
+      console.log(store.getState());
+    };
+  };
 };
 
 exports.default = configureStore;
@@ -1378,20 +1391,41 @@ document.addEventListener('DOMContentLoaded', function () {
   var preloadedState = localStorage.state ? JSON.parse(localStorage.state) : {};
   var store = (0, _store2.default)(preloadedState);
 
-  store.dispatch = addLoggingToDispatch(store);
+  // store.dispatch = addLoggingToDispatch(store);
+  store = applyMiddlewares(store, addLoggingToDispatch);
 
   var root = document.getElementById('content');
   _reactDom2.default.render(_react2.default.createElement(_root2.default, { store: store }), root);
 });
 
-function addLoggingToDispatch(store) {
-  var st = store.dispatch;
-  return function (action) {
-    console.log(store.getState());
-    console.log(action);
-    st(action);
-    console.log(store.getState());
-  };
+// function addLoggingToDispatch(store) {
+//   const st = store.dispatch;
+//   return (action) => {
+//     console.log(store.getState());
+//     console.log(action);
+//     st(action);
+//     console.log(store.getState());
+//   }
+// }
+
+// const addLoggingToDispatch = store => next => action => {
+//       console.log(store.getState());
+//       console.log(action);
+//       next(action);
+//       console.log(store.getState());
+// }
+
+function applyMiddlewares(store) {
+  var dispatch = store.dispatch;
+
+  for (var _len = arguments.length, middleWares = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    middleWares[_key - 1] = arguments[_key];
+  }
+
+  middleWares.forEach(function (middleWare) {
+    dispatch = middleWare(store)(dispatch);
+  });
+  return Object.assign({}, store, { dispatch: dispatch });
 }
 
 /***/ }),
