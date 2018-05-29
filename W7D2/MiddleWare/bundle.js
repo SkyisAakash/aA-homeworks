@@ -1326,8 +1326,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
 
-var _redux2 = _interopRequireDefault(_redux);
-
 var _root_reducer = __webpack_require__(/*! ../reducers/root_reducer */ "./frontend/reducers/root_reducer.js");
 
 var _root_reducer2 = _interopRequireDefault(_root_reducer);
@@ -1337,20 +1335,33 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  var store = (0, _redux.createStore)(_root_reducer2.default, preloadedState);
+  var store = (0, _redux.createStore)(_root_reducer2.default, preloadedState, (0, _redux.applyMiddleware)(addLoggingToDispatch, anotherMiddleware));
   store.subscribe(function () {
     localStorage.state = JSON.stringify(store.getState());
   });
   return store;
 };
 
+var anotherMiddleware = function anotherMiddleware(store) {
+  return function (next) {
+    return function (action) {
+      console.log("I am Middleware 2----------------------");
+      console.log("trial");
+      next(action);
+      console.log(next);
+    };
+  };
+};
+
 var addLoggingToDispatch = function addLoggingToDispatch(store) {
   return function (next) {
     return function (action) {
-      console.log(store.getState());
-      console.log(action);
+      console.log("I am Middleware 1----------------------");
+      // console.log(store.getState());
+      // console.log(action);
       next(action);
-      console.log(store.getState());
+      // console.log(next);
+      // console.log(store.getState());
     };
   };
 };
@@ -1392,7 +1403,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var store = (0, _store2.default)(preloadedState);
 
   // store.dispatch = addLoggingToDispatch(store);
-  store = applyMiddlewares(store, addLoggingToDispatch);
+  // store = applyMiddlewares(store, addLoggingToDispatch);
 
   var root = document.getElementById('content');
   _reactDom2.default.render(_react2.default.createElement(_root2.default, { store: store }), root);
@@ -1414,19 +1425,14 @@ document.addEventListener('DOMContentLoaded', function () {
 //       next(action);
 //       console.log(store.getState());
 // }
-
-function applyMiddlewares(store) {
-  var dispatch = store.dispatch;
-
-  for (var _len = arguments.length, middleWares = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    middleWares[_key - 1] = arguments[_key];
-  }
-
-  middleWares.forEach(function (middleWare) {
-    dispatch = middleWare(store)(dispatch);
-  });
-  return Object.assign({}, store, { dispatch: dispatch });
-}
+//
+// function applyMiddlewares(store, ...middleWares) {
+//     let dispatch = store.dispatch;
+//     middleWares.forEach((middleWare) => {
+//       dispatch = middleWare(store)(dispatch)
+//     });
+//     return Object.assign({}, store, { dispatch });
+// }
 
 /***/ }),
 
