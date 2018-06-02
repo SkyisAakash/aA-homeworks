@@ -1,0 +1,66 @@
+.splash {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: lightgrey;
+  height: 35px;
+  padding: 5px;
+  align-items: center;
+}
+
+.name {
+  color: black;
+  font-style: bold;
+  font-weight: 1500;
+  font-size: 30px;
+}
+
+.footer {
+  background-color: lightgrey;
+  padding: 5px;
+  height: 35px;
+}
+
+.footer a {
+  align-items: center;
+    text-decoration: none;
+    font-weight: 600;
+    top: 25%;
+    position: relative;
+    height: 30px;
+    padding: 15px;
+}
+
+.info {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  color: white;
+  text-shadow: 5px black;
+  font-weight: 1000;
+  font-size: 40px;
+  /* text-align: center; */
+  text-shadow: 5px 5px black;
+}
+
+.nav a {
+  align-items: center;
+  padding: 10px;
+  text-decoration: none;
+  background-color: lightgrey;
+  /* border: 1px solid black; */
+  font-weight: 600
+}
+
+a:hover {
+  background-color: darkgrey;
+  color: white;
+}
+
+.image {
+  display:
+}
