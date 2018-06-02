@@ -64,3 +64,85 @@ a:hover {
 .image {
   display:
 }
+
+.logo {
+  height: 30px;
+  width: 30px
+}
+
+
+.indexfooter {
+  background-color: lightgrey;
+  padding: 5px;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.indexfooter a {
+  align-items: center;
+    text-decoration: none;
+    font-weight: 600;
+    top: 25%;
+    height: 30px;
+    padding: 15px;
+}
+
+.create {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #F2F3F4;
+  padding: 5px;
+  border: 2px solid black;
+  top: 20px;
+}
+
+
+
+.index h2, h1 {
+  background-color: #7F8C8D;
+  color: white;
+  margin: 0px;
+  padding: 7px;
+}
+
+.list {
+  font-weight: 700;
+  font-size: 3  0px;
+}
+
+.hide {
+  display: none;
+}
+
+.index ul {
+  background-color: #E5E8E8;
+  padding: 5px;
+  margin: 0px;
+}
+
+.index ul > li {
+  display: list-item;
+  list-style-type: disc;
+  list-style-position: inside;
+  padding: 5px;
+  padding-left: 15px;
+}
+
+.navs {
+  border-top: 3px solid black;
+  border-right: 3px solid black;
+  border-left: 3px solid black;
+  display: flex;
+  justify-content: space-between;
+  background-color: lightgrey;
+  height: 35px;
+  padding: 5px;
+  align-items: center;
+  width: 100%;
+}
+
+.text {
+  padding: 2px;
+}
